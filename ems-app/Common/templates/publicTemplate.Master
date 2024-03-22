@@ -1,0 +1,164 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="publicTemplate.Master.cs" Inherits="ems_app.Common.templates.publicTemplate" %>
+<%@ Register Src="../../UserControls/UI/TreeviewMenu.ascx" TagName="TreeviewMenu" TagPrefix="uc1" %>
+<%@ Register Src="../../UserControls/UI/Footer.ascx" TagName="Footer" TagPrefix="uc2" %>
+<%@ Register Src="../../UserControls/UI/SidebarFooter.ascx" TagName="SidebarFooter" TagPrefix="uc3" %>
+<%@ Register Src="../../UserControls/UI/TopNavBar.ascx" TagName="TopNavBar" TagPrefix="uc4" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title runat="server" id="pageTitle"></title>
+
+    <!-- Bootstrap -->
+    <link href="<%= this.ResolveUrl("~/Common/vendors/bootstrap/dist/css/bootstrap.min.css") %>" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="<%= this.ResolveUrl("~/Common/vendors/font-awesome/css/font-awesome.min.css") %>" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="<%= this.ResolveUrl("~/Common/vendors/iCheck/skins/flat/green.css") %>" rel="stylesheet">
+
+    <asp:ContentPlaceHolder ID="cphStyles" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <!-- Custom Theme Style -->
+    <link href="<%= this.ResolveUrl("~/Common/build/css/custom.css") %>?rnd=132" rel="stylesheet">
+    <link href="<%= this.ResolveUrl("~/Common/css/NORCO.css") %>?rnd=132" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="57x57" href="<%= this.ResolveUrl("~/Common/images/favicon/apple-icon-57x57.png") %>"/>
+    <link rel="apple-touch-icon" sizes="60x60" href="<%= this.ResolveUrl("~/Common/images/favicon/apple-icon-60x60.png") %>"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="<%= this.ResolveUrl("~/Common/images/favicon/apple-icon-72x72.png") %>"/>
+    <link rel="apple-touch-icon" sizes="76x76" href="<%= this.ResolveUrl("~/Common/images/favicon/apple-icon-76x76.png") %>"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="<%= this.ResolveUrl("~/Common/images/favicon/apple-icon-114x114.png") %>"/>
+    <link rel="apple-touch-icon" sizes="120x120" href="<%= this.ResolveUrl("~/Common/images/favicon/apple-icon-120x120.png") %>"/>
+    <link rel="apple-touch-icon" sizes="144x144" href="<%= this.ResolveUrl("~/Common/images/favicon/apple-icon-144x144.png") %>"/>
+    <link rel="apple-touch-icon" sizes="152x152" href="<%= this.ResolveUrl("~/Common/images/favicon/apple-icon-152x152.png") %>"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="<%= this.ResolveUrl("~/Common/images/favicon/apple-icon-180x180.png") %>"/>
+    <link rel="icon" type="image/png" sizes="192x192"  href="<%= this.ResolveUrl("~/Common/images/favicon/android-icon-192x192.png") %>"/>
+    <link rel="icon" type="image/png" sizes="32x32" href="<%= this.ResolveUrl("~/Common/images/favicon/favicon-32x32.png") %>"/>
+    <link rel="icon" type="image/png" sizes="96x96" href="<%= this.ResolveUrl("~/Common/images/favicon/favicon-96x96.png") %>"/>
+    <link rel="icon" type="image/png" sizes="16x16" href="<%= this.ResolveUrl("~/Common/images/favicon/favicon-16x16.png") %>"/>
+    <link rel="manifest" href="<%= this.ResolveUrl("~/Common/images/favicon/manifest.json") %>"/>
+    <meta name="msapplication-TileColor" content="#ffffff"/>
+    <meta name="msapplication-TileImage" content="<%= this.ResolveUrl("~/Common/images/favicon/ms-icon-144x144.png") %>"/>
+    <meta name="theme-color" content="#ffffff"/>
+
+    <asp:PlaceHolder runat="server" ID="phCollegeStyleSheet" />
+    <style>
+    .bold {
+        font-weight:bold;
+    }
+    </style>
+</head>
+
+<body class="nav-sm">
+    <%--<iframe id="Defib" src="/renewSes.aspx" style="height:0px !important;" frameborder="no" width="0" height="0" runat="server"></iframe>--%>
+    <form id="form1" runat="server">
+        <telerik:RadWindowManager RenderMode="Lightweight" ID="rwmFeedback" runat="server" EnableShadow="true" OnClientClose="closeRadWindow">
+            <Windows>
+                <telerik:RadWindow RenderMode="Lightweight" ID="FeedbackDialog" runat="server" Title="Feedback" Height="500px" Width="500px" Modal="true" VisibleStatusbar="false">
+                </telerik:RadWindow>
+            </Windows>
+        </telerik:RadWindowManager>
+        <telerik:RadScriptManager ID="RadScriptManager1" runat="server"></telerik:RadScriptManager>
+        <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server"></telerik:RadAjaxLoadingPanel>
+        <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server" Width="100%" LoadingPanelID="RadAjaxLoadingPanel1" OnAjaxRequest="RadAjaxPanel1_AjaxRequest">
+        <div class="container body">
+            <div class="main_container">
+                <div class="col-md-3 left_col">
+                    <div class="left_col scroll-view">
+
+                        <br />
+
+                        <!-- sidebar menu -->
+                        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                            <div class="menu_section">
+                                <ul class="nav side-menu" runat="server" id="appMenu">
+                                </ul>
+                            </div>
+                        <uc1:TreeviewMenu ID="MAPTreeviewMenu" runat="server" />
+                        </div>
+                        <!-- /sidebar menu -->
+
+
+                        <!-- /menu footer buttons -->
+                        <uc3:SidebarFooter ID="SidebarFooter1" runat="server" />
+                        <!-- /menu footer buttons -->
+
+                    </div>
+                </div>
+
+                <!-- top navigation -->
+                <div class="top_nav">
+                    <div class="nav_menu">
+                        <nav>
+                            <div class="nav toggle">
+                                <a id="menu_toggle" title="Click here to expand/collapse menu options."><i class="fa fa-bars"></i></a>
+                            </div>
+                            <div class="mainTitle">
+                            <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                            </asp:ContentPlaceHolder>
+                            </div>
+                            <uc4:TopNavBar ID="TopNavBarMenu" runat="server" />
+                        </nav>
+                    </div>
+                </div>
+                <!-- /top navigation -->
+
+                <!-- page content -->
+                <div class="right_col" role="main">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+
+                            <div>
+
+                                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                                    </asp:ContentPlaceHolder>
+                                
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- /page content -->
+
+                <!-- footer content -->
+                <footer>
+                    <uc2:Footer ID="PageFooter" runat="server" />
+                </footer>
+                <!-- /footer content -->
+            </div>
+        </div>
+        </telerik:RadAjaxPanel>
+    </form>
+    <!-- jQuery -->
+    <script src="<%= this.ResolveUrl("~/Common/vendors/jquery/dist/jquery.min.js") %>"></script>
+    <!-- Bootstrap -->
+    <script src="<%= this.ResolveUrl("~/Common/vendors/bootstrap/dist/js/bootstrap.min.js") %>"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="<%= this.ResolveUrl("~/Common/build/js/custom.js") %>?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
+    <script src="<%= this.ResolveUrl("~/Common/js/main.js") %>?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
+    <script type="text/javascript">
+        function closeRadWindow() {
+            $find("<%= RadAjaxPanel1.ClientID %>").ajaxRequest();
+        }
+        $(function () {
+            $('body').removeClass('nav-md').addClass('nav-sm');
+            $('.left_col').removeClass('scroll-view').removeAttr('style');
+            $('#sidebar-menu li').removeClass('active');
+            $('#sidebar-menu li ul').hide();
+        });
+
+    </script>
+
+    <asp:ContentPlaceHolder ID="cphScripts" runat="server">
+    </asp:ContentPlaceHolder>
+
+
+</body>
+</html>

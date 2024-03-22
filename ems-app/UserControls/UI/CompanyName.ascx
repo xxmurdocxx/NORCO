@@ -1,0 +1,2 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="CompanyName.ascx.cs" Inherits="ems_app.UserControls.UI.CompanyName" %>
+<p> <asp:DynamicHyperlink ID="lblCompanyName" runat="server" Text=""></asp:DynamicHyperlink></p>

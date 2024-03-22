@@ -1,0 +1,401 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="main.master.cs" Inherits="ems_app.Common.templates.main" %>
+
+<%@ Register Src="../../UserControls/UI/TreeviewMenu.ascx" TagName="TreeviewMenu" TagPrefix="uc1" %>
+<%@ Register Src="../../UserControls/UI/Footer.ascx" TagName="Footer" TagPrefix="uc2" %>
+<%@ Register Src="../../UserControls/UI/SidebarFooter.ascx" TagName="SidebarFooter" TagPrefix="uc3" %>
+<%@ Register Src="../../UserControls/UI/TopNavBar.ascx" TagName="TopNavBar" TagPrefix="uc4" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title runat="server" id="pageTitle"></title>
+    <!-- Bootstrap -->
+    <link href="<%= this.ResolveUrl("~/Common/css/bootstrap-5.3.0-dist/css/bootstrap.min.css") %>" rel="stylesheet">
+    <!-- Font Awesome -->
+    <%--<link href="<%= this.ResolveUrl("~/Common/vendors/font-awesome/css/font-awesome.min.css") %>" rel="stylesheet">--%>
+
+    <!-- Font Awesome 6.2.1 -->
+    <link href="<%= this.ResolveUrl("~/Common/vendors/fontawesome/css/all.css") %>" rel="stylesheet">
+    <!-- update existing v4 CSS to use v6 icons and assets -->
+    <link href="<%= this.ResolveUrl("~/Common/vendors/fontawesome/css/v4-shims.css") %>" rel="stylesheet">
+    <!-- FA styles for unicode icons -->
+    <link href="<%= this.ResolveUrl("~/Common/styles/fontawesomeicons.css") %>" rel="stylesheet">
+
+    <asp:ContentPlaceHolder ID="cphStyles" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <!-- Custom Theme Style -->
+    <link href="<%= this.ResolveUrl("~/Common/build/css/custom.css") %>?v=<%=DateTime.Now.Ticks.ToString()%>" rel="stylesheet"/>
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="57x57" href="<%= this.ResolveUrl("~/Common/images/favicon/apple-icon-57x57.png") %>" />
+    <link rel="apple-touch-icon" sizes="60x60" href="<%= this.ResolveUrl("~/Common/images/favicon/apple-icon-60x60.png") %>" />
+    <link rel="apple-touch-icon" sizes="72x72" href="<%= this.ResolveUrl("~/Common/images/favicon/apple-icon-72x72.png") %>" />
+    <link rel="apple-touch-icon" sizes="76x76" href="<%= this.ResolveUrl("~/Common/images/favicon/apple-icon-76x76.png") %>" />
+    <link rel="apple-touch-icon" sizes="114x114" href="<%= this.ResolveUrl("~/Common/images/favicon/apple-icon-114x114.png") %>" />
+    <link rel="apple-touch-icon" sizes="120x120" href="<%= this.ResolveUrl("~/Common/images/favicon/apple-icon-120x120.png") %>" />
+    <link rel="apple-touch-icon" sizes="144x144" href="<%= this.ResolveUrl("~/Common/images/favicon/apple-icon-144x144.png") %>" />
+    <link rel="apple-touch-icon" sizes="152x152" href="<%= this.ResolveUrl("~/Common/images/favicon/apple-icon-152x152.png") %>" />
+    <link rel="apple-touch-icon" sizes="180x180" href="<%= this.ResolveUrl("~/Common/images/favicon/apple-icon-180x180.png") %>" />
+    <link rel="icon" type="image/png" sizes="192x192" href="<%= this.ResolveUrl("~/Common/images/favicon/android-icon-192x192.png") %>" />
+    <link rel="icon" type="image/png" sizes="32x32" href="<%= this.ResolveUrl("~/Common/images/favicon/favicon-32x32.png") %>" />
+    <link rel="icon" type="image/png" sizes="96x96" href="<%= this.ResolveUrl("~/Common/images/favicon/favicon-96x96.png") %>" />
+    <link rel="icon" type="image/png" sizes="16x16" href="<%= this.ResolveUrl("~/Common/images/favicon/favicon-16x16.png") %>" />
+    <link rel="manifest" href="<%= this.ResolveUrl("~/Common/images/favicon/manifest.json") %>" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="msapplication-TileImage" content="<%= this.ResolveUrl("~/Common/images/favicon/ms-icon-144x144.png") %>" />
+    <meta name="theme-color" content="#ffffff" />
+    <asp:PlaceHolder runat="server" ID="phCollegeStyleSheet" />
+    <style>
+        .guider_description a, .guider_description a:visited {
+            color: #1054AA;
+        }
+        .popUpWindowMaster {
+            position: absolute;
+            z-index: 1000;
+            border: 1px solid;
+            border-color: black;
+            top: 280px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 1000px;
+        }
+        .dismissAlert {
+            float: right;
+            font-weight: bold;
+            font-size: 10px;
+        }
+
+        .alert {
+            margin-bottom: 0px;
+            font-size: 100%;
+            padding: 5px;
+        }
+
+        .btn-dismiss {
+            color: black;
+            padding: 1px;
+            margin: 1px;
+            font-size: 1rem;
+        }
+        .changeDetail {
+            white-space: pre-wrap;
+        }
+
+        .rtContent {
+            white-space: pre-wrap;
+        }
+
+        .dismiss-alert {
+            float: right;
+            font-weight: bolder;
+            font-size: 14px;
+        }
+
+        #ctl00_rgSystemAlerts {
+            background-color: transparent;
+            border-width: 0px;
+            border-style: none;
+            line-height: 0px;
+        }
+
+        #ctl00_rgSystemAlerts.RadGrid_Office2010Silver .rgRow>td, #ctl00_rgSystemAlerts.RadGrid_Office2010Silver .rgAltRow>td {
+            border-color: transparent;
+            font-weight: bold;
+        }
+
+        #ctl00_rgSystemAlerts.RadGrid .rgRow > td, #ctl00_rgSystemAlerts.RadGrid .rgAltRow > td, #ctl00_rgSystemAlerts.RadGrid .rgEditRow > td, #ctl00_rgSystemAlerts.RadGrid .rgFooter > td, #ctl00_rgSystemAlerts.RadGrid .rgFilterRow > td, #ctl00_rgSystemAlerts.RadGrid .rgHeader, #ctl00_rgSystemAlerts.RadGrid .rgResizeCol, #ctl00_rgSystemAlerts.RadGrid .rgGroupHeader td {
+            font-size: 12pt !important;
+        }
+
+        #ctl00_rgSystemAlerts.RadGrid {
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+
+        #ctl00_rgSystemAlerts.RadGrid_Office2010Silver .rgRow a, #ctl00_rgSystemAlerts.RadGrid_Office2010Silver .rgAltRow a {
+            color: white !important;
+        }
+
+        .dismiss-button {
+            background-color: ghostwhite;
+            color: white;
+            padding: 5px 10px;
+            text-align: center;
+            display: inline-block;
+            font-size: 10pt;
+            border-radius: 4px;
+            border: 1px solid black; 
+        }
+
+        .btn-edit {
+            padding: 3px 3px;
+            font-weight: bold;
+            color: white;
+        }
+        .updates-pnl {
+            font-family: Calibri, 'Trebuchet MS', sans-serif, 'Gill Sans', 'Gill Sans MT' !important;
+            font-size: 12pt;
+            color: #333;
+        }
+        .popUpHeader {
+            background-color: #203864;
+            color: white;
+            font-weight: bold;
+            font-size: 12pt;
+            padding-left: 5px;
+            padding-right: 5px;
+            width: 100%;
+            overflow: auto;
+        }
+        .popUpHeaderX {
+            float: right;
+            color: white;
+            font-weight: bold;
+            font-size: 10pt;
+            text-decoration: none;
+        }
+        .LeftLabelColumn {
+            display: block;
+            margin-left: 10px;
+            margin-right: 10px;
+            height: 22px;
+            padding-top: 0px;
+        }
+        .LeftValueColumn {
+            text-align: left;
+            display: block;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+    </style>
+    <script type="text/javascript">
+        function showNotifications() {
+            if (document.getElementById("divNotifications").style.visibility == "visible") {
+                hideNotifications();
+                return;
+            }
+            document.getElementById("divNotifications").style.visibility = "visible";
+        }
+
+        function hideNotifications() {
+            document.getElementById("divNotifications").style.visibility = "hidden";
+        }
+
+    </script>
+    <link rel="stylesheet" href="<%= this.ResolveUrl("~/Common/js/Guiders-JS-master/guiders.css") %>" type="text/css" />
+</head>
+<body>
+    <form id="form1" runat="server">
+		<%-- system maintenance notifications --%>
+                <%--<asp:Panel runat="server" ID="pnlAlerts" class="alert alert-warning" HorizontalAlign="Center">
+
+                </asp:Panel>--%>
+                <asp:Panel runat="server" ID="pnlRgAlerts" CssClass="alert alert-info" HorizontalAlign="Center">
+                    <asp:LinkButton runat="server" OnClick="lbDismissAlert_Click" CssClass="dismiss-alert">X</asp:LinkButton>
+                    <telerik:RadGrid ID="rgSystemAlerts" runat="server" DataSourceID="odsUpcomingUpdates" HorizontalAlign="Center" Width="90%" RenderMode="Lightweight" OnPreRender="rgSystemAlerts_PreRender" OnItemCommand="rgSystemAlerts_ItemCommand" OnItemDataBound="rgSystemAlerts_ItemDataBound">
+                        <ItemStyle BackColor="Transparent" />
+                        <MasterTableView DataSourceID="odsUpcomingUpdates" DataKeyNames="NotificationID, ChangeDetails" AutoGenerateColumns="false" ItemStyle-Font-Size="X-Large" ShowHeader="false" AllowMultiColumnSorting="false" EnableHeaderContextMenu="false">
+                            <Columns>
+                                <telerik:GridBoundColumn DataField="AlertMessage" UniqueName="colAlertMessage" ItemStyle-VerticalAlign="Middle" ItemStyle-HorizontalAlign="Center" ></telerik:GridBoundColumn>
+                                <telerik:GridTemplateColumn UniqueName="InfoIcon" ItemStyle-VerticalAlign="Middle" ItemStyle-HorizontalAlign="Left" ItemStyle-Width="100px">
+                                    <ItemTemplate>
+                                        <i id="iIcon" class="fa fa-question-circle" aria-hidden="true"></i>
+                                    </ItemTemplate>
+                                </telerik:GridTemplateColumn>
+                                <telerik:GridButtonColumn ButtonType="LinkButton" UniqueName="colDismissButton" ButtonCssClass="btn btn-edit btn-primary" Text="Do Not Show Again" CommandName="DismissAlert" ItemStyle-Width="140px" ItemStyle-VerticalAlign="Middle"></telerik:GridButtonColumn>
+                            </Columns>
+                        </MasterTableView>
+                    </telerik:RadGrid>
+                </asp:Panel>
+               <asp:Panel runat="server" ID="pnlUpdates" class="alert alert-success" Visible="false" HorizontalAlign="Center" ScrollBars="None">
+                    <asp:LinkButton runat="server" ID="lbUpdates" CssClass="updates-pnl" Font-Bold="true" OnClick="lbUpdates_Click">Changes were recently made to the system. Click here to read about these changes.</asp:LinkButton>
+                    <asp:LinkButton runat="server" ID="lbDismissUpdate" Style="float: right; font-weight: bold" Text="X" OnClick="lbDismissUpdate_Click" CausesValidation="false"></asp:LinkButton>
+                </asp:Panel>
+                <%-- display update history --%>
+         <asp:Panel runat="server" class="popUpWindowMaster" ID="pnlDisplayUpdates" HorizontalAlign="Center" Visible="false">
+            <div class="popUpHeader">
+                <div class="popUpHeaderX">
+                    <asp:LinkButton runat="server" ID="lnkXPopupContainer" Text="X" OnClick="lnkXPopupContainer_Click" CausesValidation="false"></asp:LinkButton>
+                </div>
+                <div id="divPopUpHeaderText" class="popUpHeaderText" runat="server">Update History</div>
+            </div>
+
+            <asp:Panel runat="server" ID="pnlRgUpdates" Style="background-color: white;">
+                <div>
+                    <div>
+                        <telerik:RadGrid ID="rgUpdates" runat="server" AllowFilteringByColumn="True" AllowPaging="true" AllowSorting="True" Culture="es-ES" DataSourceID="odsUpdates" Width="100%" OnItemCommand="rgUpdates_ItemCommand">
+                            <ClientSettings>
+                                <Scrolling AllowScroll="true" />
+                            </ClientSettings>
+                            <GroupingSettings CaseSensitive="false" />
+                            <MasterTableView AutoGenerateColumns="false" DataKeyNames="SystemMaintenanceID" DataSourceID="odsUpdates" PageSize="10" AllowSorting="true" AllowPaging="true" AllowMultiColumnSorting="true" EnableHeaderContextMenu="true" HeaderStyle-Font-Bold="true">
+                                <Columns>
+                                    <telerik:GridBoundColumn DataField="MaintenanceEndDate" HeaderText="Date of Deployment" UniqueName="MaintenanceDeploymentDate" AllowFiltering="false" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="110px" ItemStyle-VerticalAlign="Middle">
+                                    </telerik:GridBoundColumn>
+                                    <telerik:GridBoundColumn DataField="ChangeDetails" HeaderText="Change Details" UniqueName="ChangeDetails" AllowFiltering="false" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left">
+                                        <ItemStyle CssClass="changeDetail" />
+                                    </telerik:GridBoundColumn>
+                                    <telerik:GridButtonColumn ButtonType="LinkButton" ButtonCssClass="btn btn-link" Text="Do Not Show Again" UniqueName="colDismissUpdate" CommandName="DismissUpdate" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" ItemStyle-Width="170px">
+                                    </telerik:GridButtonColumn>
+                                </Columns>
+                            </MasterTableView>
+                        </telerik:RadGrid>
+
+                    </div>
+                </div>
+            </asp:Panel>
+        </asp:Panel>
+        <telerik:RadWindowManager RenderMode="Lightweight" ID="rwmFeedback" runat="server" EnableShadow="true">
+            <Windows>
+                <telerik:RadWindow RenderMode="Lightweight" ID="FeedbackDialog" runat="server" Title="Feedback" Height="500px" Width="500px" Modal="true" VisibleStatusbar="false">
+                </telerik:RadWindow>
+            </Windows>
+        </telerik:RadWindowManager>
+        <telerik:RadScriptManager ID="RadScriptManager1" runat="server"></telerik:RadScriptManager>
+        <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server"></telerik:RadAjaxLoadingPanel>
+        <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server" Width="100%" LoadingPanelID="RadAjaxLoadingPanel1" CssClass="fitContent">
+            <header>
+                <nav class="navbar navbar-light bg-light d-flex align-items-center w-100">
+                    <asp:HiddenField ID="hfUserStageOrder" runat="server" ClientIDMode="Static" />
+                    <div class="d-flex w-25 align-items-center">
+                        <button id="mainMenu"
+                            title="Main Menu"
+                            class="navbar-toggler"
+                            type="button"
+                            data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasNavbar"
+                            aria-controls="offcanvasNavbar">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <a href="/modules/dashboard/Default.aspx">
+                        <img src="/Common/images/map-logo-white.png" alt="MAP" class="m-2" width="104" height="42"  />
+                        </a>
+                        <div class="navbar-brand">
+                            <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                            </asp:ContentPlaceHolder>
+                            <div class="collegeName">
+                                <span runat="server" id="CollegeName"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex w-75 align-items-center justify-content-around">
+                        <uc4:TopNavBar ID="TopNavBarMenu" runat="server" />
+                    </div>
+                    <div
+                        class="offcanvas offcanvas-start"
+                        tabindex="-1"
+                        id="offcanvasNavbar"
+                        aria-labelledby="offcanvasNavbarLabel">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Mapping Articulated Pathways
+                            </h5>
+                            <button
+                                type="button"
+                                class="btn-close text-reset"
+                                data-bs-dismiss="offcanvas"
+                                aria-label="Close">
+                            </button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
+                                <h2 class="d-block w-100 text-center m-2">Main Menu</h2>
+                                <uc1:TreeviewMenu ID="MAPTreeviewMenu" runat="server"></uc1:TreeviewMenu>
+                                <!-- /menu footer buttons -->
+                                <uc3:SidebarFooter ID="SidebarFooter1" runat="server" />
+
+                                <ul class="nav side-menu" runat="server" id="appMenu">
+                                </ul>
+                                <!-- /menu footer buttons -->
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+            <!-- page content -->
+            <main role="main">
+                <div>
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </main>
+            <!-- /page content -->
+            <!-- footer content -->
+            <footer>
+                <uc2:Footer ID="PageFooter" runat="server" />
+            </footer>
+            <!-- /footer content -->
+            <asp:ObjectDataSource ID="odsUpcomingUpdates" runat="server" SelectMethod="GetList" TypeName="ems_app.Common.models.GenericLookup">
+                    <SelectParameters>
+                        <asp:Parameter Name="StoredProcedure" Type="String" DefaultValue="spSystemMaintenance_ListUpcomingForUser" />
+                        <asp:Parameter Name="parameter1Name" Type="String" DefaultValue="@UserID" />
+                        <asp:SessionParameter Name="parameter1Value" SessionField="UserID" Type="String" ></asp:SessionParameter>
+                    </SelectParameters>
+                </asp:ObjectDataSource>
+
+                <asp:ObjectDataSource ID="odsUpdates" runat="server" SelectMethod="GetList" TypeName="ems_app.Common.models.GenericLookup">
+                    <SelectParameters>
+                        <asp:Parameter Name="storedProcedure" Type="String" DefaultValue="spSystemMaintenance_ListPastForUser" />
+                        <asp:Parameter Name="parameter1Name" Type="String" DefaultValue="@UserID" />
+                        <asp:SessionParameter Name="parameter1Value" SessionField="UserID" Type="String" ></asp:SessionParameter >
+                    </SelectParameters>
+                </asp:ObjectDataSource>
+        </telerik:RadAjaxPanel>      
+    </form>
+    <!-- jQuery -->
+    <script src="<%= this.ResolveUrl("~/Common/vendors/jquery/dist/jquery.min.js") %>"></script>
+    <!-- Bootstrap -->
+    <%--<script src="https://unpkg.com/@popperjs/core@2"></script>--%>
+    <script src="https://unpkg.com/@popperjs/core@2.11.5/dist/umd/popper.min.js"></script>
+    <script src="<%= this.ResolveUrl("~/Common/css/bootstrap-5.3.0-dist/js/bootstrap.min.js") %>"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="<%= this.ResolveUrl("~/Common/js/main.js") %>?ver=<%=DateTime.Now.Ticks.ToString()%>"></script>
+    <script type="text/javascript" src="<%= this.ResolveUrl("~/Common/js/Guiders-JS-master/guiders.js") %>"></script>
+    <asp:ContentPlaceHolder ID="cphScripts" runat="server">
+    </asp:ContentPlaceHolder>
+    <script>
+        function closeRadWindow() {
+            $find("<%= RadAjaxPanel1.ClientID %>").ajaxRequest();
+        }
+    </script>
+    <!-- Start of LiveChat (www.livechatinc.com) code -->
+  <%--  <script type="text/javascript">
+
+        window.__lc = window.__lc || {};
+        window.__lc.license = 10744172;
+        (function () {
+            var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
+            lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+        })();
+    </script>
+    <noscript>
+        <a href="https://www.livechatinc.com/chat-with/10744172/" rel="nofollow">Chat with us</a>,
+    powered by <a href="https://www.livechatinc.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a>
+    </noscript>--%>
+    <!-- End of LiveChat code -->
+     <!-- Start of FreshChat (theinfotechpartners.freshdesk.com) code -->
+    <script>
+        function initFreshChat() {
+            window.fcWidget.init({
+                token: "66b9e664-41fc-48ca-a814-820cbe1df0a7",
+                host: "https://wchat.freshchat.com"
+            });
+        }
+        function initialize(i, t) { var e; i.getElementById(t) ? initFreshChat() : ((e = i.createElement("script")).id = t, e.async = !0, e.src = "https://wchat.freshchat.com/js/widget.js", e.onload = initFreshChat, i.head.appendChild(e)) } function initiateCall() { initialize(document, "freshchat-js-sdk") } window.addEventListener ? window.addEventListener("load", initiateCall, !1) : window.attachEvent("load", initiateCall, !1);
+
+        window.onload = function () {
+            var userStageOrder = $('#hfUserStageOrder').val();
+            //if (userStageOrder == "2" || userStageOrder == "3" || userStageOrder == "4") {
+            if (userStageOrder == "4") { // -- Enable menu for Faculty and AO Devops 584
+                document.getElementById('mainMenu').style.display = "none";
+            }
+        }
+    </script>
+    <!-- End of FreshDesk code -->
+</body>
+</html>

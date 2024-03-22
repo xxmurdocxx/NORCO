@@ -1,0 +1,83 @@
+﻿/*--fa-font-solid         Sets the font property to use the solid style (font-family and font-weight) in pseudo-element custom CSS rules
+--fa-font-regular       Sets the font property to use the regular style (font-family and font-weight) in pseudo-element custom CSS rules
+--fa-font-light         Sets the font property to use the solid style (font-family and font-weight) in pseudo-element custom CSS rules
+--fa-font-thin          Sets the font property to use the thin style (font-family and font-weight) in pseudo-element custom CSS rules
+--fa-font-duotone       Sets the font property to use the duotone style (font-family and font-weight) in pseudo-element custom CSS rules
+--fa-font-brands        Sets the font property to use the brands style (font-family and font-weight) in pseudo-element custom CSS rules
+--fa-font-sharp-solid   Sets the font property to use the sharp familiy and solid style (font-family and font-weight) in pseudo-element custom CSS rules*/
+
+
+
+/*Articulation Matrix Icons*/
+
+/*Approved Icon*/
+/*fa-check*/
+.approved::before {
+    content: '\f00c'; 
+    font: var(--fa-font-solid);
+}
+
+/*Denied Icon*/
+/*fa-xmark*/
+.denied::before {
+    content: '\f00d'; 
+    font: var(--fa-font-solid);
+}
+
+/*Pending Icon*/
+/*alarm-clock*/
+.pending::before {
+    content: '\f34e';
+    /*content: '\f251';*/
+    font: var(--fa-font-solid);
+}
+/*48 Hours rule*/
+.pending48::before {
+    content: '\f865';
+    font: var(--fa-font-regular);
+}
+/*hourglass*/
+/*.pending::before {
+    content: '\f254'; 
+    font: var(--fa-font-solid);
+}*/
+/*alarm-exclamation*/
+/*.pending::before {
+    content: '\f843';
+    font: var(--fa-font-regular);
+}*/
+
+/*No Action Taken Icon*/
+/*circle-dot*/
+.noactiontaken::before {
+    content: '\f192'; 
+    font: var(--fa-font-regular);
+}
+
+/*No Action Required Icon*/
+/*arrow-down*/
+.noactionrequired::before {
+    content: '\f063'; 
+    font: var(--fa-font-solid);
+}
+
+/*Not Shared Course Icon*/
+/*-x-*/
+.notshared::before {
+    content: '\f00d';
+    font: var(--fa-font-solid);
+}
+
+/*ApprovedGreen Arrow Icon*/
+/*-x-*/
+.approved-down-arrow::before {
+    content: '\f354';
+    font: var(--fa-font-solid);
+}
+
+/*Deny Ban Icon*/
+/*-x-*/
+.denied-ban::before {
+    content: '\f05e';
+    font: var(--fa-font-solid);
+}

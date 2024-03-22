@@ -1,0 +1,27 @@
+{
+    "name": "guiders",
+    "title": "Guiders.js",
+    "description": "Guiders.js for adding guided tours to websites.",
+    "keywords": [
+        "guiders",
+        "tours"
+    ],
+    "version": "2.1.0",
+    "author": {
+        "name": "Jeff Pickhardt",
+        "url": "https://github.com/pickhardt"
+    },
+    "maintainers": [
+        {
+            "name": "Jeff Pickhardt",
+            "url": "https://github.com/pickhardt"
+        }
+    ],
+    "bugs": "https://github.com/pickhardt/Guiders-JS/issues",
+    "homepage": "https://github.com/pickhardt/Guiders-JS",
+    "docs": "https://github.com/pickhardt/Guiders-JS",
+    "download": "https://github.com/pickhardt/Guiders-JS",
+    "dependencies": {
+        "jquery": ">=1.3"
+    }
+}

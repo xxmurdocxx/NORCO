@@ -1,0 +1,1524 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="NORCO" Class="NORCODataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="dbo.AceCourseCatalog" Member="AceCourseCatalog">
+    <Type Name="AceCourseCatalog">
+      <Column Name="AceID" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TeamRevd" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="CourseNumber" Type="System.String" DbType="VarChar(600)" CanBeNull="true" />
+      <Column Name="Location" Type="System.String" DbType="VarChar(1500)" CanBeNull="true" />
+      <Column Name="CourseLength" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Exhibit" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="InstitutionID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AceCatalogDetail" Member="AceCatalogDetail">
+    <Type Name="AceCatalogDetail">
+      <Column Name="AceID" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="TeamRevd" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CourseDetail" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblLookupSemesters" Member="tblLookupSemesters">
+    <Type Name="tblLookupSemesters">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="iorder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Requisites" Member="Requisites">
+    <Type Name="Requisites">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="outline_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="child_outline_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="iorder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="isBeing" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="condition" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="course_name" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="user_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IssuedFormProperties" Member="IssuedFormProperties">
+    <Type Name="IssuedFormProperties">
+      <Column Name="UnitID" Type="System.String" DbType="VarChar(8) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IssuedFormID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PropertyName" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PropertyValue" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ArticulationCourse" Member="ArticulationCourses">
+    <Type Name="ArticulationCourse">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="outline_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AceID" Type="System.String" DbType="VarChar(12) NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="TeamRevd" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="condition_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="college_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Criteria" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ArticulationType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Recommendation" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="ArticulationStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ArticulationStage" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Rejection" Type="System.String" DbType="VarChar(2000)" CanBeNull="true" />
+      <Column Name="RequestType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PublishedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PublishedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Justification" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Articulate" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ForAssociateOnly" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ForTransfer" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ArticulationOfficerNotes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblProgramCourses" Member="tblProgramCourses">
+    <Type Name="tblProgramCourse">
+      <Column Name="programcourse_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="program_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="outline_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="required" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="isuborder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="iorder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="or_group" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="c_group" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="group_desc" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="group_units" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="vunits" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="icross" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="condition" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="semester" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="group_units_min" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="group_units_max" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Articulate" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CollegeCourseOccupations" Member="CollegeCourseOccupations">
+    <Type Name="CollegeCourseOccupation">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="outline_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AceID" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="TeamRevd" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CollegeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ArticulationDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="condition_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Criteria" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Recommendation" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="ArticulationType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ArticulationStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ArticulationStage" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Rejection" Type="System.String" DbType="VarChar(2000)" CanBeNull="true" />
+      <Column Name="RequestType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PublishedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PublishedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Justification" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Articulate" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ForAssociateOnly" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ForTransfer" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ArticulationOfficerNotes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="VoteTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VoteOutcomeTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VoteUserID" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="VoteCollegeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="haveAdditionalCriteria" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.MatchACECourses" Method="MatchACECourses">
+    <Parameter Name="outline_id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CourseIsArticulated" Method="CourseIsArticulated">
+    <Parameter Name="outline_id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetCourseArticulationOutlineID" Method="GetCourseArticulationOutlineID">
+    <Parameter Name="programcourse_id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetProgramSimilarities" Method="GetProgramSimilarities">
+    <Parameter Name="program_id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetProgramSimilaritiesResult">
+      <Column Name="AceID" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CheckExistArticulation" Method="CheckExistArticulation">
+    <Parameter Name="outline_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="AceID" Parameter="aceID" Type="System.String" DbType="VarChar(12)" />
+    <Parameter Name="TeamRevd" Parameter="teamRevd" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ValidateUser" Method="ValidateUser">
+    <Parameter Name="Username" Parameter="username" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Password" Parameter="password" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="ValidateUserResult">
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LastLoginDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.UpdatePassword" Method="UpdatePassword">
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="NewPassword" Parameter="newPassword" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="CurrentPassword" Parameter="currentPassword" Type="System.String" DbType="NVarChar(200)" />
+    <ElementType Name="UpdatePasswordResult">
+      <Column Name="CheckUser" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetProgramCoursesString" Method="GetProgramCoursesString" IsComposable="true">
+    <Parameter Name="program_id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.AddFeedback" Method="AddFeedback">
+    <Parameter Name="FeedType" Parameter="feedType" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Detail" Parameter="detail" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="Resource" Parameter="resource" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeleteCourseArticulation" Method="DeleteCourseArticulation">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CheckCourseIsPublished" Method="CheckCourseIsPublished">
+    <Parameter Name="outline_id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.HaveAccesURL" Method="HaveAccesURL">
+    <Parameter Name="URL" Parameter="uRL" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="RoleID" Parameter="roleID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetAceCourses" Method="GetAceCourses">
+    <Parameter Name="compareType" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetAceCoursesResult">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="title" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetCourseString" Method="GetCourseString" IsComposable="true">
+    <Parameter Name="outline_id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.CourseHaveArticulation" Method="CourseHaveArticulation">
+    <Parameter Name="AceID" Parameter="aceID" Type="System.String" DbType="VarChar(12)" />
+    <Parameter Name="TeamRevd" Parameter="teamRevd" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="CollegeID" Parameter="collegeID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="CourseHaveArticulationResult">
+      <Column Name="Exist" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CourseHaveOccupations" Method="CourseHaveOccupations">
+    <Parameter Name="AceID" Parameter="aceID" Type="System.String" DbType="VarChar(12)" />
+    <Parameter Name="TeamRevd" Parameter="teamRevd" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="CourseHaveOccupationsResult">
+      <Column Name="Exist" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.AddCampaignVeteran" Method="AddCampaignVeteran">
+    <Parameter Name="CampaignID" Parameter="campaignID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="FirstName" Parameter="firstName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="MiddleName" Parameter="middleName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="LastName" Parameter="lastName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="BirthDate" Parameter="birthDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="TermDate" Parameter="termDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="VarChar(300)" />
+    <Parameter Name="Email1" Parameter="email1" Type="System.String" DbType="VarChar(300)" />
+    <Parameter Name="Email2" Parameter="email2" Type="System.String" DbType="VarChar(300)" />
+    <Parameter Name="OfficePhone" Parameter="officePhone" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="MobilePhone" Parameter="mobilePhone" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="HomePhone" Parameter="homePhone" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="SalutationID" Parameter="salutationID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="StatusID" Parameter="statusID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ServiceID" Parameter="serviceID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="StreetAddress" Parameter="streetAddress" Type="System.String" DbType="VarChar(300)" />
+    <Parameter Name="City" Parameter="city" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="State" Parameter="state" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="ZipCode" Parameter="zipCode" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="Occupation" Parameter="occupation" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="CreatedBy" Parameter="createdBy" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CreatedOn" Parameter="createdOn" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="CollegeID" Parameter="collegeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="LeadStatusId" Parameter="leadStatusId" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdateCommunicationTemplate" Method="UpdateCommunicationTemplate">
+    <Parameter Name="Id" Parameter="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="TemplateText" Parameter="templateText" Type="System.String" DbType="VarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.FlagToBeContacted" Method="FlagToBeContacted">
+    <Parameter Name="Id" Parameter="id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetPropertyVisibility" Method="GetPropertyVisibility">
+    <Parameter Name="PropertyName" Parameter="propertyName" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="Type" Parameter="type" Type="System.String" DbType="VarChar(20)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetProgramInfo" Method="GetProgramInfo">
+    <Parameter Name="program_id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetProgramInfoResult">
+      <Column Name="program_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="status" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="archive_info" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="program" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="division_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="approv_date" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="IssuedFormID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="reqelec_text" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="reqelec_units" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="tot_units" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="college_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="core_units" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
+      <Column Name="degree_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="elect_units" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetPropertyValue" Method="GetPropertyValue" IsComposable="true">
+    <Parameter Name="IssuedFormID" Parameter="issuedFormID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="propertyName" Type="System.String" DbType="VarChar(200)" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.GetTooltip" Method="GetTooltip">
+    <Parameter Name="PropertyName" Parameter="propertyName" Type="System.String" DbType="VarChar(200)" />
+    <ElementType Name="GetTooltipResult">
+      <Column Name="PropertyName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PropertyDescription" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="PropertyToolTip" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ActiveComment" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TypeRevisionID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.UpdateProperties" Method="UpdateProperties">
+    <Parameter Name="UserId" Parameter="userId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UnitID" Parameter="unitID" Type="System.String" DbType="VarChar(8)" />
+    <Parameter Name="IssuedFormID" Parameter="issuedFormID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PropertyName" Parameter="propertyName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="PropertyValue" Parameter="propertyValue" Type="System.String" DbType="Text" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdateProgram" Method="UpdateProgram">
+    <Parameter Name="program_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="status" Type="System.Byte" DbType="TinyInt" />
+    <Parameter Name="archiveinfo" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="program" Type="System.String" DbType="VarChar(170)" />
+    <Parameter Name="approvdate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="division_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IssuedFormID" Parameter="issuedFormID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="description" Type="System.String" DbType="Text" />
+    <Parameter Name="degree_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="core_units" Type="System.String" DbType="VarChar(8)" />
+    <Parameter Name="elect_units" Type="System.String" DbType="VarChar(8)" />
+    <Parameter Name="tot_units" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="college_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="author_user_id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="UpdateProgramResult">
+      <Column Name="ProgramID" Type="System.Decimal" DbType="Decimal(38,0)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.UpdateBusinessUnits" Method="UpdateBusinessUnits">
+    <Parameter Name="UnitID" Parameter="unitID" Type="System.String" DbType="VarChar(8)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AddProgramCourse" Method="AddProgramCourse">
+    <Parameter Name="program_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="subject_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="issuedformid" Type="System.Int32" DbType="Int" />
+    <Parameter Name="course_number" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="required" Type="System.Int32" DbType="Int" />
+    <Parameter Name="iorder" Type="System.Int32" DbType="Int" />
+    <Parameter Name="isuborder" Type="System.Int32" DbType="Int" />
+    <Parameter Name="or_group" Type="System.Int32" DbType="Int" />
+    <Parameter Name="c_group" Type="System.Int32" DbType="Int" />
+    <Parameter Name="group_desc" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="group_units" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="icross" Type="System.Int32" DbType="Int" />
+    <Parameter Name="semester" Type="System.Int32" DbType="Int" />
+    <ElementType Name="AddProgramCourseResult">
+      <Column Name="ProgramCourse_id" Type="System.Decimal" DbType="Decimal(38,0)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ReorderProgramMatrix" Method="ReorderProgramMatrix">
+    <Parameter Name="program_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="iorder" Type="System.Int32" DbType="Int" />
+    <Parameter Name="required" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeleteEditOutline" Method="DeleteEditOutline">
+    <Parameter Name="programcourse_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="user_id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ProgramCourseOrder" Method="ProgramCourseOrder">
+    <Parameter Name="programcourse_id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ProgramCourseOrderResult">
+      <Column Name="iorder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetGroupInfo" Method="GetGroupInfo">
+    <Parameter Name="programcourse_id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetGroupInfoResult">
+      <Column Name="c_group" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="group_desc" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="isuborder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="outline_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.AddOccupations" Method="AddOccupations">
+    <Parameter Name="AceID" Parameter="aceID" Type="System.String" DbType="VarChar(12)" />
+    <Parameter Name="TeamRevd" Parameter="teamRevd" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="OccupationID" Parameter="occupationID" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetProgramGroupUnits" Method="GetProgramGroupUnits">
+    <Parameter Name="programcourse_id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetProgramGroupUnitsResult">
+      <Column Name="group_desc" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="group_units_min" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="group_units_max" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.UpdateProgramGroupUnits" Method="UpdateProgramGroupUnits">
+    <Parameter Name="programcourse_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="group_desc" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="min_units" Type="System.Int32" DbType="Int" />
+    <Parameter Name="max_units" Type="System.Int32" DbType="Int" />
+    <Parameter Name="user_id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AddCollegeCourseOccupations" Method="AddCollegeCourseOccupations">
+    <Parameter Name="outline_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="AceID" Parameter="aceID" Type="System.String" DbType="VarChar(12)" />
+    <Parameter Name="TeamRevd" Parameter="teamRevd" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="CollegeID" Parameter="collegeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CheckCollegeCourseHaveOccupations" Method="CheckCollegeCourseHaveOccupations">
+    <Parameter Name="outline_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="AceID" Parameter="aceID" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="TeamRevd" Parameter="teamRevd" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="CollegeID" Parameter="collegeID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeleteOccupationArticulation" Method="DeleteOccupationArticulation">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AddMultipleOccupationArticulation" Method="AddMultipleOccupationArticulation">
+    <Parameter Name="outline_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="AceID" Parameter="aceID" Type="System.String" DbType="VarChar(12)" />
+    <Parameter Name="TeamRevd" Parameter="teamRevd" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Title" Parameter="title" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="notes" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="condition" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CollegeID" Parameter="collegeID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetRoleByID" Method="GetRoleByID">
+    <Parameter Name="RoleID" Parameter="roleID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetRoleByIDResult">
+      <Column Name="RoleName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DefaultUrl" Type="System.String" DbType="VarChar(300) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.UserCanSendArticulations" Method="UserCanSendArticulations">
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CollegeID" Parameter="collegeID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AddSmartKeyword" Method="AddSmartKeyword">
+    <Parameter Name="Keyword" Parameter="keyword" Type="System.String" DbType="VarChar(2000)" />
+    <Parameter Name="KeywordType" Parameter="keywordType" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CheckExistSmartKeyword" Method="CheckExistSmartKeyword">
+    <Parameter Name="Keyword" Parameter="keyword" Type="System.String" DbType="VarChar(2000)" />
+    <Parameter Name="KeywordType" Parameter="keywordType" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetCampaign" Method="GetCampaign">
+    <Parameter Name="Id" Parameter="id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetCampaignResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="CampaignStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="SemesterID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="CollegeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.DeleteCampaign" Method="DeleteCampaign">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AddCampaign" Method="AddCampaign">
+    <Parameter Name="CampaignId" Parameter="campaignId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Description" Parameter="description" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="CampaignStatus" Parameter="campaignStatus" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Notes" Parameter="notes" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="SemesterID" Parameter="semesterID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CollegeID" Parameter="collegeID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AddCampaignCity" Method="AddCampaignCity">
+    <Parameter Name="CampaignId" Parameter="campaignId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CityId" Parameter="cityId" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetMinimumStageId" Method="GetMinimumStageId" IsComposable="true">
+    <Parameter Name="CollegeId" Parameter="collegeId" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetMaximumStageId" Method="GetMaximumStageId" IsComposable="true">
+    <Parameter Name="CollegeId" Parameter="collegeId" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetStageIDByRoleId" Method="GetStageIDByRoleId" IsComposable="true">
+    <Parameter Name="CollegeId" Parameter="collegeId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="RoleID" Parameter="roleID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetStageOrderByRoleId" Method="GetStageOrderByRoleId" IsComposable="true">
+    <Parameter Name="CollegeId" Parameter="collegeId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="RoleID" Parameter="roleID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetUsersByStageID" Method="GetUsersByStageID">
+    <Parameter Name="CollegeID" Parameter="collegeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="StageId" Parameter="stageId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="outline_id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetUsersByStageIDResult">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastLoginDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="RoleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CollegeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.UpdateOccupationRecommendation" Method="UpdateOccupationRecommendation">
+    <Parameter Name="RecommendationID" Parameter="recommendationID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="isCheck" Type="System.String" DbType="VarChar(5)" />
+    <Parameter Name="ArticulationID" Parameter="articulationID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="UpdateOccupationRecommendationResult">
+      <Column Name="Result" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.UpdateCourseRecommendation" Method="UpdateCourseRecommendation">
+    <Parameter Name="RecommendationID" Parameter="recommendationID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="isCheck" Type="System.String" DbType="VarChar(5)" />
+    <Parameter Name="ArticulationID" Parameter="articulationID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="UpdateCourseRecommendationResult">
+      <Column Name="Result" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetArticulationTitle" Method="GetArticulationTitle" IsComposable="true">
+    <Parameter Name="ArticulationID" Parameter="articulationID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ArticulationType" Parameter="articulationType" Type="System.Int32" DbType="Int" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.RememberPasswordByEmail" Method="RememberPasswordByEmail">
+    <Parameter Name="email" Type="System.String" DbType="VarChar(MAX)" />
+    <ElementType Name="RememberPasswordByEmailResult">
+      <Column Name="Password" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CheckUserRequestByEmail" Method="CheckUserRequestByEmail" IsComposable="true">
+    <Parameter Name="email" Type="System.String" DbType="VarChar(MAX)" />
+    <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.ApproveUserRequest" Method="ApproveUserRequest">
+    <Parameter Name="Id" Parameter="id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetAdminUsers" Method="GetAdminUsers">
+    <Parameter Name="CollegeID" Parameter="collegeID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetAdminUsersResult">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastLoginDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="RoleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CollegeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StageID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RoleID1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RoleName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DefaultUrl" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="SendArticulations" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ReviewArticulations" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ReviewArticulationUrl" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="isAdministrator" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="iconClass" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetMenuDataByParentID" Method="GetMenuDataByParentID">
+    <Parameter Name="ParentMenuID" Parameter="parentMenuID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="RoleID" Parameter="roleID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CollegeID" Parameter="collegeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ApplicationID" Parameter="applicationID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetMenuDataByParentIDResult">
+      <Column Name="MenuID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ParentMenuID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="url" Type="System.String" DbType="NVarChar(350)" CanBeNull="true" />
+      <Column Name="OrderItem" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MenuClass" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="urlTarget" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ApplicationID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetSurveyQuestions" Method="GetSurveyQuestions">
+    <Parameter Name="SurveyID" Parameter="surveyID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetSurveyQuestionsResult">
+      <Column Name="SurveyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="QuestionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="QuestionNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Text" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UpdatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetQuestionChoices" Method="GetQuestionChoices">
+    <Parameter Name="QuestionID" Parameter="questionID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetQuestionChoicesResult">
+      <Column Name="ChoiceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Text" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Value" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsCorrectAnswer" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="QuestionID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UpdatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.UpdateQuestion" Method="UpdateQuestion">
+    <Parameter Name="QuestionID" Parameter="questionID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ResponseValue" Parameter="responseValue" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="SurveyID" Parameter="surveyID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.TakeQuiz" Method="TakeQuiz">
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="SurveyID" Parameter="surveyID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.FinishQuiz" Method="FinishQuiz">
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="SurveyID" Parameter="surveyID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetResponseValue" Method="GetResponseValue" IsComposable="true">
+    <Parameter Name="QuestionID" Parameter="questionID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="SurveyID" Parameter="surveyID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetSurvey" Method="GetSurvey">
+    <Parameter Name="SurveyID" Parameter="surveyID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetSurveyResult">
+      <Column Name="SurveyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="WelcomeMessage" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ExitMessage" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CollegeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UpdatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CheckSurveyIsCompleted" Method="CheckSurveyIsCompleted" IsComposable="true">
+    <Parameter Name="SurveyID" Parameter="surveyID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.PublishArticulation" Method="PublishArticulation">
+    <Parameter Name="ArticulationId" Parameter="articulationId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ArticulationType" Parameter="articulationType" Type="System.Int32" DbType="Int" />
+    <Parameter Name="outline_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Code" Parameter="code" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetUniquePublishedCode" Method="GetUniquePublishedCode" IsComposable="true">
+    <Parameter Name="outline_id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.CourseIsPublished" Method="CourseIsPublished" IsComposable="true">
+    <Parameter Name="outline_id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.GetReportExpressions" Method="GetReportExpressions">
+    <Parameter Name="ParentID" Parameter="parentID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetReportExpressionsResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ShortCode" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ParentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CountUnknownOccupations" Method="CountUnknownOccupations">
+    <Parameter Name="CollegeID" Parameter="collegeID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="CountUnknownOccupationsResult">
+      <Column Name="ResultType" Type="System.String" DbType="VarChar(7)" CanBeNull="true" />
+      <Column Name="ResultsCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.AddNewACEOccupation" Method="AddNewACEOccupation">
+    <Parameter Name="AceID" Parameter="aceID" Type="System.String" DbType="VarChar(12)" />
+    <Parameter Name="TeamRevd" Parameter="teamRevd" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Description" Parameter="description" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="OccupationCode" Parameter="occupationCode" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="ServiceCode" Parameter="serviceCode" Type="System.String" DbType="VarChar(3)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CheckOccupationExist" Method="CheckOccupationExist" IsComposable="true">
+    <Parameter Name="OccupationCode" Parameter="occupationCode" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.GetOccupationById" Method="GetOccupationById">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetOccupationByIdResult">
+      <Column Name="AceID" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TeamRevd" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Exhibit" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="DetailTitle" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Occupation" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="OccupationServiceCode" Type="System.String" DbType="Char(3)" CanBeNull="true" />
+      <Column Name="ImportedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="AddedByCollege" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.UpdateVeteranOccupation" Method="UpdateVeteranOccupation">
+    <Parameter Name="VeteranID" Parameter="veteranID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NewOccupation" Parameter="newOccupation" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="OldOccupation" Parameter="oldOccupation" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetArticulationHighlightedCriteria" Method="GetArticulationHighlightedCriteria">
+    <Parameter Name="ArticulationID" Parameter="articulationID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ArticulationType" Parameter="articulationType" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetArticulationHighlightedCriteriaResult">
+      <Column Name="" Member="Column1" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetReviewArticulationUrl" Method="GetReviewArticulationUrl" IsComposable="true">
+    <Parameter Name="ApplicationID" Parameter="applicationID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.GetReviewArticulationUsers" Method="GetReviewArticulationUsers">
+    <Parameter Name="outline_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CollegeID" Parameter="collegeID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetReviewArticulationUsersResult">
+      <Column Name="Email" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.UserCanReviewArticulations" Method="UserCanReviewArticulations">
+    <Parameter Name="StageID" Parameter="stageID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetRecommendations" Method="GetRecommendations">
+    <Parameter Name="AceId" Parameter="aceId" Type="System.String" DbType="VarChar(12)" />
+    <Parameter Name="TeamRevd" Parameter="teamRevd" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="LeadID" Parameter="leadID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetRecommendationsResult">
+      <Column Name="" Member="Column1" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CheckOtherOccupationsHaveCriteria" Method="CheckOtherOccupationsHaveCriteria" IsComposable="true">
+    <Parameter Name="Criteria" Parameter="criteria" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="ArticulationType" Parameter="articulationType" Type="System.Int32" DbType="Int" />
+    <Parameter Name="outline_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CollegeID" Parameter="collegeID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.GetCrossListingCourses" Method="GetCrossListingCourses">
+    <Parameter Name="outline_id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetCrossListingCoursesResult">
+      <Column Name="outline_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="subject" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="course_number" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="course_title" Type="System.String" DbType="VarChar(170)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetCrossListingNoArticulations" Method="GetCrossListingNoArticulations" IsComposable="true">
+    <Parameter Name="outline_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="AceID" Parameter="aceID" Type="System.String" DbType="VarChar(12)" />
+    <Parameter Name="TeamRevd" Parameter="teamRevd" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Type" Parameter="type" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CollegeID" Parameter="collegeID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.addProgramGroup" Method="addProgramGroup">
+    <Parameter Name="program_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="required" Type="System.Int32" DbType="Int" />
+    <Parameter Name="iorder" Type="System.Int32" DbType="Int" />
+    <Parameter Name="isuborder" Type="System.Int32" DbType="Int" />
+    <Parameter Name="c_group" Type="System.Int32" DbType="Int" />
+    <Parameter Name="group_desc" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="user_id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="addProgramGroupResult">
+      <Column Name="ProgramCourseID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CopyArticulationCriteria" Method="CopyArticulationCriteria">
+    <Parameter Name="ArticulationSourceID" Parameter="articulationSourceID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ArticulationType" Parameter="articulationType" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ArticulationToCopyID" Parameter="articulationToCopyID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdateValidationCheckList" Method="UpdateValidationCheckList">
+    <Parameter Name="ProgramID" Parameter="programID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="DegreeProgram" Parameter="degreeProgram" Type="System.String" DbType="VarChar(300)" />
+    <Parameter Name="CSUTransfer" Parameter="cSUTransfer" Type="System.String" DbType="VarChar(300)" />
+    <Parameter Name="IGETCTransfer" Parameter="iGETCTransfer" Type="System.String" DbType="VarChar(300)" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AddProgramSchedule" Method="AddProgramSchedule">
+    <Parameter Name="program_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="outline_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="required" Type="System.Int32" DbType="Int" />
+    <Parameter Name="iorder" Type="System.Int32" DbType="Int" />
+    <Parameter Name="c_group" Type="System.Int32" DbType="Int" />
+    <Parameter Name="group_desc" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="isElective" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetValidationChecklist" Method="GetValidationChecklist">
+    <Parameter Name="ProgramID" Parameter="programID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetValidationChecklistResult">
+      <Column Name="ProgramID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DegreeProgram" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="CSUTransfer" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="IGETCTransfer" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedByName" Type="System.String" DbType="NVarChar(102) NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UpdatedByName" Type="System.String" DbType="NVarChar(102) NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.DeleteArticulation" Method="DeleteArticulation">
+    <Parameter Name="ArticulationID" Parameter="articulationID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ArticulationType" Parameter="articulationType" Type="System.Int32" DbType="Int" />
+    <Parameter Name="OutlineID" Parameter="outlineID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AddUserRequest" Method="AddUserRequest">
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Password" Parameter="password" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="FirstName" Parameter="firstName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="LastName" Parameter="lastName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="CollegeID" Parameter="collegeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IsInstructor" Parameter="isInstructor" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="RequestedCourses" Parameter="requestedCourses" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="ApplicationID" Parameter="applicationID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetStages" Method="GetStages">
+    <Parameter Name="CollegeID" Parameter="collegeID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetStagesResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RoleId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[Order]" Member="Order" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Required" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CollegeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BypassStage" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Notification" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="NotificationDays" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EnforceApproval" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ViewAllArticulations" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="RoleID1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RoleName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DefaultUrl" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="SendArticulations" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ReviewArticulations" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ReviewArticulationUrl" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="isAdministrator" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="iconClass" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CollegeID1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ApplicationID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="isArticulationOfficer" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ReviewEligibility" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="AssessmentsBySubject" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SyllabusBySubject" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CheckFacultyReviewSubmitted" Method="CheckFacultyReviewSubmitted" IsComposable="true">
+    <Parameter Name="ArticulationID" Parameter="articulationID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ArticulationType" Parameter="articulationType" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.GetFacultyReviewSourceArticulation" Method="GetFacultyReviewSourceArticulation">
+    <Parameter Name="subject" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="course_number" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="AceID" Parameter="aceID" Type="System.String" DbType="VarChar(12)" />
+    <Parameter Name="TeamRevd" Parameter="teamRevd" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="GetFacultyReviewSourceArticulationResult">
+      <Column Name="outline_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ArticulationID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ArticulationType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CheckArticulationExistOtherColleges" Method="CheckArticulationExistOtherColleges" IsComposable="true">
+    <Parameter Name="CollegeID" Parameter="collegeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="subject" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="course_number" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="AceID" Parameter="aceID" Type="System.String" DbType="VarChar(12)" />
+    <Parameter Name="TeamRevd" Parameter="teamRevd" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.CheckStageIsFacultyDistrictReview" Method="CheckStageIsFacultyDistrictReview" IsComposable="true">
+    <Parameter Name="StageID" Parameter="stageID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.GetFacultyReviewArticulationUrl" Method="GetFacultyReviewArticulationUrl" IsComposable="true">
+    <Parameter Name="StageID" Parameter="stageID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CollegeID" Parameter="collegeID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.GetFacultyDistrictReviewUsers" Method="GetFacultyDistrictReviewUsers">
+    <Parameter Name="outline_id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetFacultyDistrictReviewUsersResult">
+      <Column Name="Email" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetStageIDByOrder" Method="GetStageIDByOrder" IsComposable="true">
+    <Parameter Name="CollegeId" Parameter="collegeId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Order" Parameter="order" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CheckIsFacultyDistrictReview" Method="CheckIsFacultyDistrictReview" IsComposable="true">
+    <Parameter Name="RoleID" Parameter="roleID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.HavePendingFacultyDistrictReview" Method="HavePendingFacultyDistrictReview" IsComposable="true">
+    <Parameter Name="CollegeID" Parameter="collegeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.DontArticulate" Method="DontArticulate">
+    <Parameter Name="ArticulationId" Parameter="articulationId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ArticulationType" Parameter="articulationType" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AddArticulationCriteria" Method="AddArticulationCriteria">
+    <Parameter Name="ArticulationID" Parameter="articulationID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ArticulationType" Parameter="articulationType" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Backcolor" Parameter="backcolor" Type="System.String" DbType="VarChar(7)" />
+    <Parameter Name="Fontcolor" Parameter="fontcolor" Type="System.String" DbType="VarChar(7)" />
+    <Parameter Name="Criteria" Parameter="criteria" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="Condition" Parameter="condition" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CriteriaType" Parameter="criteriaType" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CatalogCriteriaID" Parameter="catalogCriteriaID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="AddArticulationCriteriaResult">
+      <Column Name="" Member="Column1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.EnforceFacultyProccess" Method="EnforceFacultyProccess">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CollegeId" Parameter="collegeId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="subject" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="course_number" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="AceID" Parameter="aceID" Type="System.String" DbType="VarChar(12)" />
+    <Parameter Name="TeamRevd" Parameter="teamRevd" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="action" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Reason" Parameter="reason" Type="System.String" DbType="VarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetUsersNotifyWhenPublish" Method="GetUsersNotifyWhenPublish">
+    <Parameter Name="outline_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="college_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="user_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="action" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetUsersNotifyWhenPublishResult">
+      <Column Name="Email" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CheckMoveForwardPool" Method="CheckMoveForwardPool" IsComposable="true">
+    <Parameter Name="ArticulationID" Parameter="articulationID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ArticulationType" Parameter="articulationType" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.AddMoveForwardPool" Method="AddMoveForwardPool">
+    <Parameter Name="ArticulationID" Parameter="articulationID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ArticulationType" Parameter="articulationType" Type="System.Int32" DbType="Int" />
+    <Parameter Name="outline_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CollegeID" Parameter="collegeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="SubmittedBy" Parameter="submittedBy" Type="System.Int32" DbType="Int" />
+    <ElementType Name="AddMoveForwardPoolResult">
+      <Column Name="" Member="Column1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.AddOtherArticulationCriteria" Method="AddOtherArticulationCriteria">
+    <Parameter Name="ArticulationID" Parameter="articulationID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ArticulationType" Parameter="articulationType" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Backcolor" Parameter="backcolor" Type="System.String" DbType="VarChar(7)" />
+    <Parameter Name="Fontcolor" Parameter="fontcolor" Type="System.String" DbType="VarChar(7)" />
+    <Parameter Name="Criteria" Parameter="criteria" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="Condition" Parameter="condition" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CriteriaType" Parameter="criteriaType" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CatalogCriteriaID" Parameter="catalogCriteriaID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CheckIsDisabledForArticulate" Method="CheckIsDisabledForArticulate" IsComposable="true">
+    <Parameter Name="outline_id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.CheckCouseHaveArticulations" Method="CheckCouseHaveArticulations" IsComposable="true">
+    <Parameter Name="outline_id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.GetCourseInformation" Method="GetCourseInformation">
+    <Parameter Name="outline_id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetCourseInformationResult">
+      <Column Name="outline_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="status" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="archive_info" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="approv_date" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="subject_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="division_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="department_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="course_number" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="course_title" Type="System.String" DbType="VarChar(170)" CanBeNull="true" />
+      <Column Name="unit_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="applicability_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="repeatability_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="grading_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Vunit_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IssuedFormID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="semester" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="comments" Type="System.String" DbType="VarChar(4000)" CanBeNull="true" />
+      <Column Name="implementation_date" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="college_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CatID" Type="System.String" DbType="VarChar(9)" CanBeNull="true" />
+      <Column Name="CrsPrefix" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="CrsSuffix" Type="System.String" DbType="VarChar(7)" CanBeNull="true" />
+      <Column Name="taxon_program_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="effective_start_date" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="effective_end_date" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="author_user_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="division_user_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="department_user_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Deactivate" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="RevisionDueDate" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="Articulate" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ArticulationStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PublishedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PublishedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="StageId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Rejection" Type="System.String" DbType="VarChar(2000)" CanBeNull="true" />
+      <Column Name="PublishedCode" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="isBasicMilitaryTraining" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="UpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DisableArticulate" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DisableArticulateRationale" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="subject" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="[_Units]" Member="_Units" Type="System.String" DbType="VarChar(8) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SetDisabledForArticulate" Method="SetDisabledForArticulate">
+    <Parameter Name="outline_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="rationale" Type="System.String" DbType="VarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.MoveStage" Method="MoveStage">
+    <Parameter Name="outline_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CheckUserId" Parameter="checkUserId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Direction" Parameter="direction" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Info" Parameter="info" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="CollegeId" Parameter="collegeId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="new_stage_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ArticulationID" Parameter="articulationID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ArticulationType" Parameter="articulationType" Type="System.Int32" DbType="Int" />
+    <ElementType Name="MoveStageResult">
+      <Column Name="Direction" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NewStageId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Event" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CheckArticulationExistInCollege" Method="CheckArticulationExistInCollege" IsComposable="true">
+    <Parameter Name="CollegeID" Parameter="collegeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="subject" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="course_number" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="AceID" Parameter="aceID" Type="System.String" DbType="VarChar(12)" />
+    <Parameter Name="TeamRevd" Parameter="teamRevd" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.CheckSubjectExistInCollege" Method="CheckSubjectExistInCollege" IsComposable="true">
+    <Parameter Name="CollegeID" Parameter="collegeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="subject" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="course_number" Type="System.String" DbType="VarChar(15)" />
+    <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.CountVeteransInSelectedPrograms" Method="CountVeteransInSelectedPrograms" IsComposable="true">
+    <Parameter Name="CollegeID" Parameter="collegeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CampaignID" Parameter="campaignID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Program" Parameter="program" Type="System.String" DbType="VarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SumVeteransUnitsInSelectedPrograms" Method="SumVeteransUnitsInSelectedPrograms" IsComposable="true">
+    <Parameter Name="CollegeID" Parameter="collegeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Program" Parameter="program" Type="System.String" DbType="VarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.FacultyReviewFlagToBeNotified" Method="FacultyReviewFlagToBeNotified">
+    <Parameter Name="ArticulationId" Parameter="articulationId" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetPreviousNextStageId" Method="GetPreviousNextStageId" IsComposable="true">
+    <Parameter Name="CollegeId" Parameter="collegeId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="StageID" Parameter="stageID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Direction" Parameter="direction" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetStageDataByID" Method="GetStageDataByID">
+    <Parameter Name="CollegeID" Parameter="collegeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="StageId" Parameter="stageId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetStageDataByIDResult">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RoleId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[Order]" Member="Order" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Required" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CollegeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BypassStage" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Notification" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="NotificationDays" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EnforceApproval" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ViewAllArticulations" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="EnforceFacultyReview" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="EnforceFacultyReviewUserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EnforceFacultyReviewURL" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="RoleName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.NotificationLog" Method="NotificationLog">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Notes" Parameter="notes" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="VarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.InsertUser" Method="InsertUser">
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Password" Parameter="password" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="FirstName" Parameter="firstName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="LastName" Parameter="lastName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="RoleID" Parameter="roleID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CollegeID" Parameter="collegeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="AutomaticNotify" Parameter="automaticNotify" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="Welcome" Parameter="welcome" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="SuperUser" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="DistrictAdministrator" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetUserFavoriteState" Method="GetUserFavoriteState" IsComposable="true">
+    <Parameter Name="MenuId" Parameter="menuId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.UpdateFavorite" Method="UpdateFavorite">
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="MenuID" Parameter="menuID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetCourseTitle" Method="GetCourseTitle" IsComposable="true">
+    <Parameter Name="outline_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CollegeID" Parameter="collegeID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.GetCollegeSummary" Method="GetCollegeSummary">
+    <Parameter Name="CollegeID" Parameter="collegeID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetCollegeSummaryResult">
+      <Column Name="Summary" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SetMessageAsReaded" Method="SetMessageAsReaded">
+    <Parameter Name="MessageID" Parameter="messageID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.DeleteMessage" Method="DeleteMessage">
+    <Parameter Name="MessageID" Parameter="messageID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.ArchiveArticulation" Method="ArchiveArticulation">
+    <Parameter Name="ArticulationId" Parameter="articulationId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ArticulationType" Parameter="articulationType" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetRoleNameByStageId" Method="GetRoleNameByStageId" IsComposable="true">
+    <Parameter Name="StageId" Parameter="stageId" Type="System.Int32" DbType="Int" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="dbo.DeleteArticulationCriteria" Method="DeleteArticulationCriteria">
+    <Parameter Name="CriteriaID" Parameter="criteriaID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="OutlineID" Parameter="outlineID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CheckUserWelcomePage" Method="CheckUserWelcomePage" IsComposable="true">
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.UpdateUserWelcome" Method="UpdateUserWelcome">
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetUserDataByUserName" Method="GetUserDataByUserName">
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="AppID" Parameter="appID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetUserDataByUserNameResult">
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastLoginDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="RoleID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CollegeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StageID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CollegeID1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="College" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CollegeAbbreviation" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
+      <Column Name="CollegeLogo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="StyleSheet" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PendingDataIntake" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DistrictID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CheckExistOtherColleges" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="RoleName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="isAdministrator" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="reviewArticulations" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="isArticulationOfficer" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AutomaticNotify" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AdminUser" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Welcome" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SuperUser" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DistrictAdministrator" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetUserDataByID" Method="GetUserDataByID">
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetUserDataByIDResult">
+      <Column Name="CollegeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="LastLoginDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="RoleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StageID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AutomaticNotify" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="isAdministrator" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ReviewArticulations" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SendArticulations" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Welcome" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SuperUser" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DistrictAdministrator" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetLeadIDByCampaign" Method="GetLeadIDByCampaign" IsComposable="true">
+    <Parameter Name="VeteranId" Parameter="veteranId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CampaignID" Parameter="campaignID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetStageToBeNotified" Method="GetStageToBeNotified" IsComposable="true">
+    <Parameter Name="CollegeId" Parameter="collegeId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="StageID" Parameter="stageID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.UpdateArticulationNotes" Method="UpdateArticulationNotes">
+    <Parameter Name="ArticulationID" Parameter="articulationID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Notes" Parameter="notes" Type="System.String" DbType="VarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CheckArticulationListExistInOtherColleges" Method="CheckArticulationListExistInOtherColleges" IsComposable="true">
+    <Parameter Name="CollegeID" Parameter="collegeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ArticulationList" Parameter="articulationList" Type="System.String" DbType="VarChar(200)" />
+    <Return Type="System.Boolean" />
+  </Function>
+  <Function Name="dbo.ApprovalArticulationWorkflow" Method="ApprovalArticulationWorkflow">
+    <Parameter Name="outline_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserId" Parameter="userId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Direction" Parameter="direction" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Info" Parameter="info" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="CollegeId" Parameter="collegeId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="new_stage_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ArticulationID" Parameter="articulationID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ArticulationType" Parameter="articulationType" Type="System.Int32" DbType="Int" />
+    <ElementType Name="ApprovalArticulationWorkflowResult">
+      <Column Name="Direction" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NewStageId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Event" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.AddArticulation" Method="AddArticulation">
+    <Parameter Name="outline_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="AceID" Parameter="aceID" Type="System.String" DbType="VarChar(12)" />
+    <Parameter Name="TeamRevd" Parameter="teamRevd" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Title" Parameter="title" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="notes" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="Justification" Parameter="justification" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="ArticulationOfficerNotes" Parameter="articulationOfficerNotes" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="recommendation" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="ArticulationType" Parameter="articulationType" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CollegeID" Parameter="collegeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="haveAdditionalCriteria" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="SourceID" Parameter="sourceID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetProgramCourses" Method="GetProgramCourses">
+    <Parameter Name="Id" Parameter="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CollegeID" Parameter="collegeID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetProgramCoursesResult">
+      <Column Name="PublishedCode" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CourseTitle" Type="System.String" DbType="VarChar(239)" CanBeNull="true" />
+      <Column Name="vunits" Type="System.String" DbType="VarChar(8) NOT NULL" CanBeNull="false" />
+      <Column Name="LeadID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="outline_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="collegeid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetVeteranLeadAceExhibits" Method="GetVeteranLeadAceExhibits">
+    <Parameter Name="LeadId" Parameter="leadId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CollegeID" Parameter="collegeID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetVeteranLeadAceExhibitsResult">
+      <Column Name="AceID" Type="System.String" DbType="VarChar(12) NOT NULL" CanBeNull="false" />
+      <Column Name="TeamRevd" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="ACEType" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetVeteranLeadRecommendationCriteria" Method="GetVeteranLeadRecommendationCriteria">
+    <Parameter Name="LeadId" Parameter="leadId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CollegeID" Parameter="collegeID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetVeteranLeadRecommendationCriteriaResult">
+      <Column Name="Criteria" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetCommunicationTemplate" Method="GetCommunicationTemplate">
+    <Parameter Name="Id" Parameter="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CollegeID" Parameter="collegeID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetCommunicationTemplateResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="TemplateText" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UpdatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UpdatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CollegeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.UpdateUser" Method="UpdateUser">
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Password" Parameter="password" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="FirstName" Parameter="firstName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="LastName" Parameter="lastName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="RoleID" Parameter="roleID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="AutomaticNotify" Parameter="automaticNotify" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="Welcome" Parameter="welcome" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="SuperUser" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="DistrictAdministrator" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetLeadInformation" Method="GetLeadInformation">
+    <Parameter Name="Id" Parameter="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CollegeID" Parameter="collegeID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetLeadInformationResult">
+      <Column Name="FullName" Type="System.String" DbType="VarChar(102)" CanBeNull="true" />
+      <Column Name="FirstName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Service" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="College" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="AceID" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="TeamRevd" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="OccupationCode" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="OccupationDescription" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetACEDataByCriteria" Method="GetACEDataByCriteria">
+    <Parameter Name="CollegeID" Parameter="collegeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Criteria" Parameter="criteria" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="CriteriaDescription" Parameter="criteriaDescription" Type="System.String" DbType="VarChar(MAX)" />
+    <ElementType Name="GetACEDataByCriteriaResult">
+      <Column Name="AceID" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="TeamRevd" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Criteria" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CriteriaDescription" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="TypeDescription" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="EntityType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SendMessage" Method="SendMessage">
+    <Parameter Name="Body" Parameter="body" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="FromUserID" Parameter="fromUserID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="From" Parameter="from" Type="System.String" DbType="NVarChar(256)" />
+    <Parameter Name="ToUserID" Parameter="toUserID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(256)" />
+    <Parameter Name="Subject" Parameter="subject" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="Articulations" Parameter="articulations" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="Action" Parameter="action" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="CriteriaPackageID" Parameter="criteriaPackageID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CriteriaPackageCourses" Parameter="criteriaPackageCourses" Type="System.String" DbType="VarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GetArticulationByID" Method="GetArticulationByID">
+    <Parameter Name="ArticulationID" Parameter="articulationID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GetArticulationByIDResult">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ArticulationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="outline_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AceID" Type="System.String" DbType="VarChar(12) NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(300) NOT NULL" CanBeNull="false" />
+      <Column Name="TeamRevd" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CollegeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ArticulationType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Recommendation" Type="System.String" DbType="VarChar(400)" CanBeNull="true" />
+      <Column Name="ArticulationStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ArticulationStage" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Rejection" Type="System.String" DbType="VarChar(2000)" CanBeNull="true" />
+      <Column Name="RequestType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PublishedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PublishedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Justification" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Articulate" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ForAssociateOnly" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ForTransfer" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ArticulationOfficerNotes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="haveAdditionalCriteria" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Notified" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="LastSubmittedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LastSubmittedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PendingApproval" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SourceID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Order" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Occupation" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="subject" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="course_number" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="CIDNumber" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.CloneOtherCollegeArticulation" Method="CloneOtherCollegeArticulation">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="OtherCollegeId" Parameter="otherCollegeId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CollegeId" Parameter="collegeId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="subject" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="course_number" Type="System.String" DbType="VarChar(15)" />
+    <Parameter Name="CloneToArticulationStage" Parameter="cloneToArticulationStage" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CIDNumber" Parameter="cIDNumber" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="outline_id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="CloneOtherCollegeArticulationResult">
+      <Column Name="ArticulationID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.AddVeteranACECourse" Method="AddVeteranACECourse">
+    <Parameter Name="AceID" Parameter="aceID" Type="System.String" DbType="VarChar(12)" />
+    <Parameter Name="TeamRevd" Parameter="teamRevd" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="CourseNumber" Parameter="courseNumber" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="CourseVersion" Parameter="courseVersion" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="VeteranID" Parameter="veteranID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CollegeID" Parameter="collegeID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.FacultyReviewGetEmails" Method="FacultyReviewGetEmails">
+    <Parameter Name="articulations" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="college_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="SelectedStages" Parameter="selectedStages" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="district_evaluators" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="iedrc_evaluators" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="district_faculty" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="iedrc_faculty" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="district_articulation" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="iedrc_articulation" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="isDenial" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="FacultyReviewGetEmailsResult">
+      <Column Name="email" Type="System.String" DbType="VarChar(400)" CanBeNull="true" />
+      <Column Name="username" Type="System.String" DbType="VarChar(400)" CanBeNull="true" />
+      <Column Name="userid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ToRoleID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsCC" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+</Database>
