@@ -42,6 +42,7 @@ namespace ems_app.modules.military
                 hfCollegeID.Value = Session["CollegeID"].ToString();
                 hfUserID.Value = Session["UserID"].ToString();
                 divDocUpload.Style.Add("color", "black");
+                radTextBoxNotes.Text = "";
                 if (Request["VeteranID"] == null || Request["VeteranID"].ToString() == "0")
                 {
                     hfVeteranID.Value = "";
@@ -353,7 +354,7 @@ namespace ems_app.modules.military
         }
         #endregion
 
-        #region STUDENT INFORMATION
+         #region STUDENT INFORMATION
         private void GetStudent(string id)
         {
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["NORCOConnectionString"].ConnectionString))
@@ -1460,14 +1461,14 @@ namespace ems_app.modules.military
                 {
                     if (ddlAction != null)
                     {
-                        ddlAction.Items.Remove(ddlAction.Items[8]);
-                        ddlAction.Items.Remove(ddlAction.Items[7]);
-                        ddlAction.Items.Remove(ddlAction.Items[6]);
+                        //ddlAction.Items.Remove(ddlAction.Items[8]);
+                        //ddlAction.Items.Remove(ddlAction.Items[7]);
+                        //ddlAction.Items.Remove(ddlAction.Items[6]);
                         //ddlAction.Items.Remove(ddlAction.Items[5]);
                         var item = ddlAction.FindItemByText("Reverse Elective");
                         if (item != null)
                         {
-                            ddlAction.Items.Remove(item);
+                           ddlAction.Items.Remove(item);
                         }
                         ddlAction.Items.Remove(ddlAction.Items[4]);
                         ddlAction.Items.Remove(ddlAction.Items[3]);
@@ -1900,7 +1901,7 @@ namespace ems_app.modules.military
                         if (CheckCreditRecommendationExists(item["Criteria"].Text) != 0)
                         {
                             RadTextBox rtbCreditRec = (RadTextBox)item.FindControl("rtbCreditRecommendation") as RadTextBox;
-                            
+
                             Session["SelectedCourse"] = "";
                             Session["SelectedCourseText"] = "";
                             if (rtbCreditRec.Visible)
@@ -1914,7 +1915,7 @@ namespace ems_app.modules.military
                             modalPopup.NavigateUrl = "~/modules/popups/CreditRecommendations.aspx?SourceID=8";
                             script = "function f(){$find(\"" + modalPopup.ClientID + "\").show(); Sys.Application.remove_load(f);}Sys.Application.add_load(f);";
                             ScriptManager.RegisterStartupScript(Page, Page.GetType(), "key", script, true);
-                            
+
 
                         }
                         else
@@ -1928,37 +1929,37 @@ namespace ems_app.modules.military
                         break;
 
                     case "3": // Articulate as area
-                      
-                            RadTextBox rtbCreditRec2 = (RadTextBox)item.FindControl("rtbCreditRecommendation") as RadTextBox;
-                            var criteria = rtbCreditRec2.Text.Replace(",", "|");
-                            var unit = new String(criteria.TakeWhile(Char.IsDigit).ToArray());
-                            Session["criteria"] = criteria;
-                            Session["outline_id"] = Controllers.Course.GetCourseIDByUnits(unit, Convert.ToInt32(Session["CollegeID"]));
+
+                        RadTextBox rtbCreditRec2 = (RadTextBox)item.FindControl("rtbCreditRecommendation") as RadTextBox;
+                        var criteria = rtbCreditRec2.Text.Replace(",", "|");
+                        var unit = new String(criteria.TakeWhile(Char.IsDigit).ToArray());
+                        Session["criteria"] = criteria;
+                        Session["outline_id"] = Controllers.Course.GetCourseIDByUnits(unit, Convert.ToInt32(Session["CollegeID"]));
 
 
-                            Session["AceExhibitID"] = item["AceExhibitID"].Text;
-                            Session["SelectedAceExhibitID"] = item["AceExhibitID"].Text;
-                            Session["VeteranID"] = hfVeteranID.Value;
+                        Session["AceExhibitID"] = item["AceExhibitID"].Text;
+                        Session["SelectedAceExhibitID"] = item["AceExhibitID"].Text;
+                        Session["VeteranID"] = hfVeteranID.Value;
 
-                            Session["SelectedCourse"] = "";
-                            Session["SelectedCourseText"] = "";
-                            //if (rtbCreditRec2.Visible)    commented out on 10/17/23
-                            //{
-                                Session["SelectedCriteria"] = rtbCreditRec2.Text.Replace(",", "|");
-                            //}
-                            //else
-                            //{
-                            //    Session["SelectedCriteria"] = item["Criteria2"].Text;
-                            //}
-                            //Session["SelectedCriteriaText"] = rtbCreditRec2.Text; commented out on 10/17/23
-                            Session["SelectedCriteriaText"] = item["Criteria"].Text;
-                            //Session["SelectedAceID"] = item["AceExhibitID"].Text; Commented out on 10/17/23
-                            Session["SelectedAceID"] = item["AceID"].Text;
-                            //Session["UnitsAvailable"] = item["EligibleCredits"].Text;
-                            modalPopup.NavigateUrl = "~/modules/popups/CreditRecommendations.aspx?SourceID=8&AreaCredit=true";
-                            script = "function f(){$find(\"" + modalPopup.ClientID + "\").show(); Sys.Application.remove_load(f);}Sys.Application.add_load(f);";
-                            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "key", script, true);
-                        
+                        Session["SelectedCourse"] = "";
+                        Session["SelectedCourseText"] = "";
+                        //if (rtbCreditRec2.Visible)    commented out on 10/17/23
+                        //{
+                        Session["SelectedCriteria"] = rtbCreditRec2.Text.Replace(",", "|");
+                        //}
+                        //else
+                        //{
+                        //    Session["SelectedCriteria"] = item["Criteria2"].Text;
+                        //}
+                        //Session["SelectedCriteriaText"] = rtbCreditRec2.Text; commented out on 10/17/23
+                        Session["SelectedCriteriaText"] = item["Criteria"].Text;
+                        //Session["SelectedAceID"] = item["AceExhibitID"].Text; Commented out on 10/17/23
+                        Session["SelectedAceID"] = item["AceID"].Text;
+                        //Session["UnitsAvailable"] = item["EligibleCredits"].Text;
+                        modalPopup.NavigateUrl = "~/modules/popups/CreditRecommendations.aspx?SourceID=8&AreaCredit=true";
+                        script = "function f(){$find(\"" + modalPopup.ClientID + "\").show(); Sys.Application.remove_load(f);}Sys.Application.add_load(f);";
+                        ScriptManager.RegisterStartupScript(Page, Page.GetType(), "key", script, true);
+
                         break;
                     case "4": // Articulate as elective
                         hfCriteria.Value = item["Criteria"].Text;
@@ -1966,7 +1967,9 @@ namespace ems_app.modules.military
                         hfExhibitText.Value = item["AceExhibit"].Text;
                         hfUnits.Value = new String(item["Criteria"].Text.TakeWhile(Char.IsDigit).ToArray());
                         rbcUnits.DataBind();
+                        hfCourseType.Value = item["CourseType"].Text;
                         script = "function f(){$find(\"" + modalElectiveUnits.ClientID + "\").show(); Sys.Application.remove_load(f);}Sys.Application.add_load(f);";
+                      
                         ScriptManager.RegisterStartupScript(Page, Page.GetType(), "key", script, true);
                         break;
                     case "5": // Reverse elective
@@ -2659,17 +2662,20 @@ namespace ems_app.modules.military
                 else
                 {
                     var unit_id = "0";
+                    string note = "aa";
                     if (string.IsNullOrEmpty(rbcUnits.SelectedValue))
                     {
                         rbcUnits.DataBind();
                         unit_id = rbcUnits.Items.Count > 0 ? rbcUnits.Items[0].Value : "0";
+                        note = radTextBoxNotes.Text;
                     }
                     else
                     {
                         unit_id = rbcUnits.SelectedValue;
+                        note = radTextBoxNotes.Text;
                     }
 
-                    var result = Controllers.VeteranEligibleCredits.AddVeteranEligibleCredits(Convert.ToInt32(hfVeteranID.Value), hfExhibitID.Value, Convert.ToInt32(Session["UserID"].ToString()), outline_id, creditRecommendation, Convert.ToInt32(unit_id), 8);
+                    var result = Controllers.VeteranEligibleCredits.AddVeteranEligibleCredits(Convert.ToInt32(hfVeteranID.Value), hfExhibitID.Value, Convert.ToInt32(Session["UserID"].ToString()), outline_id, creditRecommendation, Convert.ToInt32(unit_id), 8 , note);
 
                     if (result == -1)
                     {

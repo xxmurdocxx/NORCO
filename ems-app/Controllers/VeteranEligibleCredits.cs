@@ -10,7 +10,7 @@ namespace ems_app.Controllers
 {
     public class VeteranEligibleCredits
     {
-        public static int AddVeteranEligibleCredits(int veteran_id, string exhibit_id, int user_id, int outline_id, string criteria, int? unit_id, int sourceid)
+        public static int AddVeteranEligibleCredits(int veteran_id, string exhibit_id, int user_id, int outline_id, string criteria, int? unit_id, int sourceid, string note)
         {
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings["NORCOConnectionString"].ConnectionString))
             {
@@ -25,6 +25,7 @@ namespace ems_app.Controllers
                     cmd.Parameters.AddWithValue("@Criteria", criteria);
                     cmd.Parameters.AddWithValue("@unit_id", unit_id);
                     cmd.Parameters.AddWithValue("@sourceid", sourceid);
+                    cmd.Parameters.AddWithValue("@note", note);
                     cmd.Parameters.Add("@Id", SqlDbType.Int);
                     cmd.Parameters["@Id"].Direction = ParameterDirection.Output;
                     cmd.ExecuteReader();

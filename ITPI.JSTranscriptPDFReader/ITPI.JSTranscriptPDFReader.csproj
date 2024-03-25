@@ -70,6 +70,9 @@
     <Reference Include="System.Runtime.Serialization" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\ems-app\Controllers\VeteranEligibleCredits.cs">
+      <Link>VeteranEligibleCredits.cs</Link>
+    </Compile>
     <Compile Include="AzureComputerVision\ImportProcess.cs" />
     <Compile Include="AzureComputerVision\PdfElement.cs" />
     <Compile Include="AzureComputerVision\PdfToVeteranEntities.cs" />

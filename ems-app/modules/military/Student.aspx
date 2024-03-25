@@ -3,6 +3,9 @@
 <%@ Register Src="~/UserControls/students/MilitaryCredits.ascx" TagPrefix="uc1" TagName="MilitaryCredits" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="cphStyles" runat="server">
     <style>
+        .customRadWindow .rwContent {
+            overflow: hidden !important;
+        }   
         .RadInput_Material input.riTextBox {
             color: #000 !important;
         }
@@ -99,6 +102,7 @@
     <asp:HiddenField ID="hfExistVeteran" runat="server" ClientIDMode="Static" />
     <asp:HiddenField ID="hfExhibitID" runat="server" ClientIDMode="Static" />
     <asp:HiddenField ID="hfExhibitText" runat="server" ClientIDMode="Static" />
+    <asp:HiddenField ID="hfCourseType" runat="server" ClientIDMode="Static" />
     <asp:HiddenField ID="hfOutlineID" runat="server" ClientIDMode="Static" />
     <asp:HiddenField ID="hfUnits" runat="server" ClientIDMode="Static" />
     <asp:HiddenField ID="hfDeleteId" runat="server" ClientIDMode="Static" />
@@ -366,7 +370,7 @@
                      </div>
                 </ContentTemplate>
             </telerik:RadWindow>
-            <telerik:RadWindow RenderMode="Lightweight" ID="modalElectiveUnits" runat="server" Title="Articulate as Elective" Width="550px" Height="200px" Behaviors="Close" Modal="true" VisibleStatusbar="false" OnClientClose="refreshGrid">
+            <telerik:RadWindow RenderMode="Lightweight" ID="modalElectiveUnits" runat="server" Title="Articulate as Elective" Width="580px" Height="280px" Behaviors="Close" Modal="true" VisibleStatusbar="false" OnClientClose="refreshGrid"  OnClientBeforeShow="validateRadTextBox" CssClass="customRadWindow">
                 <ContentTemplate>
                     <asp:SqlDataSource ID="sqlUnits" runat="server" ConnectionString="<%$ ConnectionStrings:NORCOConnectionString %>" SelectCommand="SELECT unit_id,unit FROM tblLookupUnits WHERE college_id = 1 AND CAST(unit AS float) <= @Units AND unit_id IN (SELECT unit_id FROM Course_IssuedForm WHERE college_id = @CollegeID AND subject_id = (SELECT subject_id FROM tblSubjects WHERE COLLEGE_ID = @CollegeID AND SUBJECT LIKE '%CPL%')) ORDER BY CAST(unit AS float) DESC" SelectCommandType="Text">
                         <SelectParameters>
@@ -374,12 +378,19 @@
                             <asp:ControlParameter Name="Units" ControlID="hfUnits" PropertyName="value" Type="Double" />
                         </SelectParameters>
                     </asp:SqlDataSource>
-                    <div class="row">
+                   <div id="contenido" style="height: 280px; overflow-y: hidden;">
+                    <div class="row" >
                         <div class="col" style="text-align:center">
                             Applied Credits :
                             <telerik:RadComboBox ID="rbcUnits" DataSourceID="sqlUnits" DataTextField="unit" DataValueField="unit_id" Width="50%" ToolTip="Search units" runat="server" MarkFirstMatch="true" >
                             </telerik:RadComboBox>
                             <asp:CompareValidator runat="server" ID="rfvUnits" ValidationGroup="validateUnits" ValueToCompare="" Display="Dynamic" Operator="NotEqual" ControlToValidate="rbcUnits" ErrorMessage="* Required" ForeColor="Red" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col" style="text-align:center">
+                            Note : 
+                            <telerik:RadTextBox RenderMode="Lightweight" runat="server" ID="radTextBoxNotes" Width="50%" Height="80px" TextMode="MultiLine" Resize="None" EmptyMessage="" Text=""></telerik:RadTextBox>
                         </div>
                     </div>
                     <div class="row">
@@ -390,6 +401,13 @@
                             <telerik:RadButton ID="btnCancelElectiveUnits" runat="server" Text="Cancel" OnClientClicked="CancelModalElectiveUnits" AutoPostBack="false"></telerik:RadButton>
                         </div>
                     </div>
+                    <div class="row">
+                 <div class="col" style="text-align:center">
+                      <telerik:RadLabel runat="server" ID="radLabelMessage" Text="this CR has already been articulated with an Area Credit, please enter any note (if any)" CssClass="urlStyle"></telerik:RadLabel>
+                      </div>
+                  </div>
+                  
+                 </div>
                 </ContentTemplate>
             </telerik:RadWindow>
             <telerik:RadWindow RenderMode="Lightweight" ID="modalConfirmDeletedExhibits" runat="server" Title="Delete confirmation" Width="550px" Height="220px" Behaviors="Close" Modal="true" VisibleStatusbar="false">
@@ -1231,6 +1249,11 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="cphScripts" runat="server">
+    <style type="text/css">
+    .urlStyle {
+         color: red !important; /* Asegura que el color rojo tenga alta prioridad */
+    }
+    </style>
     <script type="text/javascript">
         /* OPEN POPUP */
         function OpenWnd() {
@@ -1432,6 +1455,23 @@
             wnd.hide();
             refreshGrid();
         }
+
+      
+        function validateRadTextBox(sender, args) {
+         var courseType = document.getElementById('hfCourseType').value;
+            var radLabel = document.getElementById('<%= radLabelMessage.ClientID %>');
+            var modal = $find('<%= modalElectiveUnits.ClientID %>'); 
+        // Verifica si el RadTextBox está vacío
+            if (courseType.includes("Area credit") || courseType.includes("Course credit")) {
+                $get('<%= radTextBoxNotes.ClientID %>').parentNode.parentNode.style.display = 'block';
+                radLabel.style.display = 'block';
+
+              } else {
+                $get('<%= radTextBoxNotes.ClientID %>').parentNode.parentNode.style.display = 'none';
+                radLabel.style.display = 'none';
+            }
+        }
+
 
     </script>
 </asp:Content>
